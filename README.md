@@ -30,7 +30,7 @@ Anna Syme
 
 * PacBio Hifi reads in fasta format, in a collection
 * Bionano data in cmap format
-* HiC reads,  two files (F and R) in fastq format
+* HiC reads, two files (F and R) in fastq format
 
 ## What is going on in the workflows?
 
@@ -46,18 +46,12 @@ Anna Syme
 
 * If you will be using real vertebrate genome data, it is likely you will need more Galaxy storage. Contact the Galaxy Australia team to discuss/request. 
 * Import your real data sets into Galaxy.
-* Or, to use real VGP data, go to Upload Data: Choose remote files: Genome Ark: species and choose a species. 
+* Or, to use real VGP data, go to **Upload Data: Choose remote files: Genome Ark: species** and choose a species. 
 * Note: not all species have data from all Hifi, HiC and bionano sources. 
 * Note that you will likely have to convert the data into the correct formats required. Alternatively, modify the workflows themselves to accept the data in the formats you have. 
 
 ## Run the workflows on real data
 
-* Do any QC required, this is not in the current workflow.
-
-
-* modify workflows as needed
-eg labelling or tagging outputs
-are all params ok for your data for each tool, if not modify
-For large data would recommend testing:
-make a subset of data
-run each tool on subset of data first
+* Do any QC required, as this is not in the current workflow.
+* Modify workflows as needed: label or tag outputs, change tool parameters, swap tools, add or delete steps. 
+* For large data we would recommend testing tools and workflows on a subset of the data first.
