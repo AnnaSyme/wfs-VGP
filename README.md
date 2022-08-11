@@ -50,6 +50,15 @@ Anna Syme
 * Note: not all species have data from all Hifi, HiC and bionano sources. 
 * Note that you will likely have to convert the data into the correct formats required. Alternatively, modify the workflows themselves to accept the data in the formats you have. 
 
+## Is there anything I need to change in the workflows?
+
+* Most likely, yes. Look at every tool and the parameters to check it suits your data and aims. 
+* Examples of things that might need changing:
+* Set the kmer size in the meryl tool, and make sure the setting in the Genomescope tool matches this. There is no absolute answer for what this setting should be; a common setting is 21. 
+* In the Quast tool (used several times), set the lineage appropriately (e.g. eukaryote) and set as "large genome" 
+* In the Busco tool (used several times), set the lineage appropriately (e.g. Vertebrata)
+* In the Salsa tool, check the enzyme sequence is correct for your data.
+
 ## Run the workflows on real data
 
 * Do any QC required, as this is not in the current workflow.
