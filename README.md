@@ -37,6 +37,7 @@ Anna Syme
 * The workflows are large and have many steps. 
 * To better understand the workflow, look at the workflow canvas, view each tool and its settings, see how each step is connected. 
 * Consider what outputs you would require and make sure it is clear where they are and what they are called. 
+* For a description of many of the tools and the default parameters that have been set, see the [Galaxy tutorial for VGP workflows](https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html).
 
 ## Run the workflows on test data
 
