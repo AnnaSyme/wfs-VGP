@@ -60,8 +60,13 @@ Anna Syme
 * In the Busco tool (used several times), set the lineage appropriately (e.g. Vertebrata)
 * In the Salsa tool, check the enzyme sequence is correct for your data.
 
+## Do I need to keep all of the output files from the workflow?
+
+* No. In particular, some of the intermediate output files are very large, e.g., BAM files. You may wish to not keep these. 
+* To automatically not keep these files during the workflow run: go to the workflow canvas, see the box for a tool, see the output files, and untick any files you will not need. 
+
 ## Run the workflows on real data
 
-* Do any QC required, as this is not in the current workflow.
+* Do any QC required, as this is not in the current workflow. For more information on QC, see the Galaxy Training Network tutorials.
 * Modify workflows as needed: label or tag outputs, change tool parameters, swap tools, add or delete steps. 
 * For large data we would recommend testing tools and workflows on a subset of the data first.
