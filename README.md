@@ -17,6 +17,7 @@ Anna Syme
 * But note that the links there are to the Galaxy Eu server (not Galaxy Au), and some of the workflow links may not be the most recent (see later in this document for more recent links). 
 
 ## Can I use the VGP workflows in Galaxy Australia?
+
 * Yes. You can run these on test data or real data. They are designed to work for vertebrate genomes where you have Hifi, HiC and bionano data. 
 * The workflows are described in Galaxy Training Network materials. 
 * [VGP assembly pipeline - short version, although still with complete workflow](https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_workflow_training/tutorial.html)
@@ -25,6 +26,18 @@ Anna Syme
 * Alternatively, a recent workflow version (August 4 2022) has been imported via the Galaxy Training Network, and published in Galaxy Australia: https://usegalaxy.org.au/u/anna/w/vgp-assembly-training-workflow-imported-from-uploaded-file-2
 * A test data set, from the Galaxy Training Network, has been uploaded to this history: https://usegalaxy.org.au/u/anna/h/gtn-vgp-tutorial-data-march-2022
 
+
+## Do I need any background knowledge before I run these workflows? 
+
+* Yes. We recommend the Galaxy Training Network tutorials. 
+* Introduction to Galaxy: https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html
+* Assembly: https://training.galaxyproject.org/training-material/topics/assembly/tutorials/general-introduction/tutorial.html
+* QC: https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html
+* VGP: https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html
+* These should be enough to get you started running the VGP workflows, but there are many additional tutorials that would also be useful. 
+* As most species have never had their genome sequenced, it is not possible to guarantee existing workflows are optimal for new data. 
+* It is most likely that any new genome assembly will have its own set of required workflow and analysis customisations to account for things such as ploidy and repeats. 
+* Usually, an assembly workflow will need testing and customising, in concert with reading the biological domain literature. 
 
 ## What data do I need?
 
