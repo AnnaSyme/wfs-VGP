@@ -12,8 +12,7 @@ Anna Syme
 
 ## Are the VGP workflows in Galaxy Australia?
 
-* Yes. An international team is working to create these workflows in Galaxy. 
-* For more information see https://galaxyproject.org/projects/vgp/
+* An international team is working to create these workflows in Galaxy: for more information see [https://galaxyproject.org/projects/vgp/](https://galaxyproject.org/projects/vgp/)
 * In Galaxy Australia, you can access a set of these workflows by going to the [Genome Lab](https://genome.usegalaxy.org.au/), scroll to the Genome Assembly section, click on the Workflows tab.
 * The workflows to import are:
   * Assembly with PacBio HiFi data:
@@ -35,20 +34,21 @@ Anna Syme
 
 Overall, you need these inputs: 
 * HiFi reads as collection
-  * If HiFi data in BAM format, convert to FASTQ 
+  * If HiFi data in BAM format, convert to FASTQ using the BAM to FASTQ + QC v1.0 workflow
   * then group output FASTQ files into a single collection
 * HiC reads as R1 and R2
 
-For each workflow, you will need these inputs:
-* WF1
+For each of the other workflows, you will need these inputs:
+
+* WF1 Kmer profiling
   * Inputs:
     *  HiFi reads in collection
-* WF4
+* WF4 Hifi assembly and HiC phasing
   * Inputs: 
     * HiFi reads in collection
     * HiC R1, HiC R2, 
     * from WF1: genomescope model parameters, genomescope summary, mery db
-* WF8a
+* WF8a HiC scaffolding
   * Inputs:
     * From WF4: Assembly in gfa format
     * From WF4: estimated genome size
@@ -56,7 +56,7 @@ For each workflow, you will need these inputs:
   * Settings:
     * For restriction enzymes: set correctly
     * For Input GFA: Generates the initial set of paths: set true (if using assembly from Hifiasm) 
-* WF9
+* WF9 Decontamination
   * Inputs:
     * From WF8a: Scaffolded assembly in FASTA format
   * Settings:
