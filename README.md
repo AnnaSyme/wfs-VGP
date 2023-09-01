@@ -10,26 +10,62 @@ Anna Syme
 * Paper: Rhie, A., McCarthy, S.A., Fedrigo, O. et al. Towards complete and error-free genome assemblies of all vertebrate species. Nature 592, 737–746 (2021). https://doi.org/10.1038/s41586-021-03451-0
 * This paper covers the testing of tools and workflows. We recommend also looking at the Supplementary Information which is very informative.
 
-## Are the VGP workflows in Galaxy?
+## Are the VGP workflows in Galaxy Australia?
 
 * Yes. An international team is working to create these workflows in Galaxy. 
 * For more information see https://galaxyproject.org/projects/vgp/
-* But note that the links there are to the Galaxy Eu server (not Galaxy Au), and some of the workflow links may not be the most recent (see later in this document for more recent links). 
+* In Galaxy Australia, you can access a set of these workflows by going to the [Genome Lab](https://genome.usegalaxy.org.au/), scroll to the Genome Assembly section, click on the Workflows tab.
+* The workflows to import are:
+  * Assembly with PacBio HiFi data:
+    * BAM to FASTQ + QC v1.0
+  * Assembly with PacBio Hifi and HiC data:
+    * Kmer profiling
+    * Hifi assembly and HiC phasing
+    * HiC scaffolding
+    * Decontamination
 
 ## Can I use the VGP workflows in Galaxy Australia?
 
-* Yes. You can run these on test data or real data. They are designed to work for vertebrate genomes where you have Hifi, HiC and bionano data. 
+* Yes. You can run these on test data or real data. They are designed to work for vertebrate genomes where you have PacBio Hifi data and HiC data. 
 * The workflows are described in Galaxy Training Network materials. 
 * [VGP assembly pipeline - short version, although still with complete workflow](https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_workflow_training/tutorial.html)
 * [VGP assembly pipeline - long version](https://training.galaxyproject.org/training-material/topics/assembly/tutorials/vgp_genome_assembly/tutorial.html)
-* You can get the workflows and datasets from there and import them into your own Galaxy Australia account. 
-* Alternatively, a recent workflow version (August 4 2022) has been imported via the Galaxy Training Network, and published in Galaxy Australia: https://usegalaxy.org.au/u/anna/w/vgp-assembly-training-workflow-imported-from-uploaded-file-2
-* A test data set, from the Galaxy Training Network, has been uploaded to this history: https://usegalaxy.org.au/u/anna/h/gtn-vgp-tutorial-data-march-2022
+   
+## What data do I need? 
 
+Overall, you need these inputs: 
+* HiFi reads as collection
+  * If HiFi data in BAM format, convert to FASTQ 
+  * then group output FASTQ files into a single collection
+* HiC reads as R1 and R2
+
+For each workflow, you will need these inputs:
+* WF1
+  * Inputs:
+    *  HiFi reads in collection
+* WF4
+  * Inputs: 
+    * HiFi reads in collection
+    * HiC R1, HiC R2, 
+    * from WF1: genomescope model parameters, genomescope summary, mery db
+* WF8a
+  * Inputs:
+    * From WF4: Assembly in gfa format
+    * From WF4: estimated genome size
+    * HiC R1, Hi C R2
+  * Settings:
+    * For restriction enzymes: set correctly
+    * For Input GFA: Generates the initial set of paths: set true (if using assembly from Hifiasm) 
+* WF9
+  * Inputs:
+    * From WF8a: Scaffolded assembly in FASTA format
+  * Settings:
+    * For step "ID non-target contaminants": select Kraken 2 database : choose: Prebuilt Refseq indexes: PlusPF (Standard plus protozoa and fungi)
+    * For step "blast mitochondria db": choose locally installed blast database: choose RefSeq mitochondrion
 
 ## Do I need any background knowledge before I run these workflows? 
 
-* Yes. We recommend the Galaxy Training Network tutorials. 
+* We recommend the Galaxy Training Network tutorials. 
 * Introduction to Galaxy: https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html
 * Assembly: https://training.galaxyproject.org/training-material/topics/assembly/tutorials/general-introduction/tutorial.html
 * QC: https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html
@@ -38,12 +74,6 @@ Anna Syme
 * As most species have never had their genome sequenced, it is not possible to guarantee existing workflows are optimal for new data. 
 * It is most likely that any new genome assembly will have its own set of required workflow and analysis customisations to account for things such as ploidy and repeats. 
 * Usually, an assembly workflow will need testing and customising, in concert with reading the biological domain literature. 
-
-## What data do I need?
-
-* PacBio Hifi reads in fasta format, in a collection
-* Bionano data in cmap format
-* HiC reads, two files (F and R) in fastq format
 
 ## What is going on in the workflows?
 
@@ -61,7 +91,7 @@ Anna Syme
 * If you will be using real vertebrate genome data, it is likely you will need more Galaxy storage. Contact the Galaxy Australia team to discuss/request. 
 * Import your real data sets into Galaxy.
 * Or, to use real VGP data, go to **Upload Data: Choose remote files: Genome Ark: species** and choose a species. 
-* Note: not all species have data from all Hifi, HiC and bionano sources. 
+* Note: not all species have data from all Hifi and HiC sources. 
 * Note that you will likely have to convert the data into the correct formats required. Alternatively, modify the workflows themselves to accept the data in the formats you have. 
 
 ## Is there anything I need to change in the workflows?
@@ -71,7 +101,6 @@ Anna Syme
 * Set the kmer size in the meryl tool, and make sure the setting in the Genomescope tool matches this. There is no absolute answer for what this setting should be; a common setting is 21. 
 * In the Quast tool (used several times), set the lineage appropriately (e.g. eukaryote) and set as "large genome" 
 * In the Busco tool (used several times), set the lineage appropriately (e.g. Vertebrata)
-* In the Salsa tool, check the enzyme sequence is correct for your data.
 
 ## Do I need to keep all of the output files from the workflow?
 
@@ -80,6 +109,16 @@ Anna Syme
 
 ## Run the workflows on real data
 
-* Do any QC required, as this is not in the current workflow. For more information on QC, see the Galaxy Training Network tutorials.
 * Modify workflows as needed: label or tag outputs, change tool parameters, swap tools, add or delete steps. 
 * For large data we would recommend testing tools and workflows on a subset of the data first.
+
+## Where to see the outputs
+
+* Your Galaxy history holds the outputs from the workflow run.
+* Some files may be hidden - click on "show hidden" to see.
+* In the top Galaxy menu, go to User: Workflow invocations to see details of the workflow run. 
+
+## What to do if a tool or workflow fails?
+
+* Read the error message to see if you can troubleshoot the issue. Otherwise, contact help@genome.edu.au
+* If you are able to, re-run the tool or workflow in case it was a temporary connection issue. 
