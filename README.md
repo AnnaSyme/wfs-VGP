@@ -1,3 +1,6 @@
+[Text now hosted on Galaxy Australia media site. This may be out-of-date].
+
+
 ## **How to use the international Vertebrate Genome Project workflows in Galaxy Australia**
 
 Anna Syme
